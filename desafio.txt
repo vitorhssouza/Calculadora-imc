@@ -1,0 +1,7 @@
+Desafio pra aula de quinta
+
+DESAFIO 1
+Crie um programa que possibilite o usuário digitar seu nome, seu peso, altura, idade e a saída seja seu IMC.
+
+Entrega até dia 06/10/2022. Enviar antes da aula.
+
