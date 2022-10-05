@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>IMC</title>
+   <style>
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+           font-family: Arial, Helvetica, sans-serif;
+       }
+       
+       body {
+           width: 100vw;
+           height: 100vh;
+           display: flex;
+           justify-content: center;
+           background-color: #03152e;
+           color: white;
+       }
+       
+       main {
+           width: 500px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           flex-direction: column;
+           gap: 20px;
+       }
+       
+       .divNome, .divIdade, .divAltura, .divPeso, .divCalc {
+           width: 90%;
+           display: flex;
+           flex-direction: column;
+           gap: 10px;
+       }
+       
+       input, button {
+           padding: 10px;
+           font-size: 20px;
+           outline: none;
+           border: none;
+           border-radius: 5px;
+       }
+       
+       button {
+           cursor: pointer;
+           background-color: #10942d;
+           color: white;
+       }
+       
+       @media (max-width: 500px) {
+           body, input, button {
+           font-size: 15px;
+           }
+       }
+   </style> 
+</head>
+<body>
+   <main>
+       <h2> Cálculo IMC</h2>
+       
+       <div class="divNome">
+           <label for="nome">Nome </label>
+           <input type="text" id="nome" />
+       </div>
+
+       <div class="divIdade">
+           <label for="idade">Idade </label>
+           <input type="number" id="idade" />
+       </div>
+
+       <div class="divAltura">
+           <label for="altura">Altura (M)</label>
+           <input type="number" id="altura" />
+         </div>
+
+       <div class="divPeso">
+           <label for="peso">Peso (KG)</label>
+           <input type="number" id="peso" />
+       </div>
+
+       <div class="divCalc">
+           <button onclick="imc()">Calcular</button>
+       </div>
+
+       <span id="resultado"></span>
+   </main>
+   <script>
+       const nome = document.querySelector('#nome')
+       const idade = document.querySelector('#idade')
+       const altura = document.querySelector('#altura')
+       const peso = document.querySelector('#peso')
+       const resultado = document.querySelector('#resultado')
+       
+
+       const imc = () => {
+
+       if (altura.value !== '' && peso.value !== '') {
+           const imc = (peso.value / (altura.value * altura.value)).toFixed(2)
+           let classificacao = ''
+
+           if (imc < 18.5) {
+               classificacao = 'Abaixo do peso'
+           } else if (imc < 25) {
+               classificacao = 'Peso normal'
+           } else if (imc < 30) {
+               classificacao = 'Acima do peso'
+           } else if (imc < 35) {
+               classificacao = 'Obesidade Grau I'
+           } else if (imc < 41) {
+               classificacao = 'Obesidade Grau II'
+           } else {
+               classificacao = 'Obesidade Grau III'
+           }
+           
+           resultado.innerHTML = `${nome.value} seu imc é: ${imc} (${classificacao})`
+       } else {
+           resultado.innerHTML = 'Preencha os campos'
+       }
+       }
+   </script>
+   
+</body>
+</html>
